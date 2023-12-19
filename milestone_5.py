@@ -1,15 +1,5 @@
-
 import random
 #import re
-
-def unique_count(word):
-  k=list()
-  for x in word:
-    if x not in k:
-      k.append(x)
-  return len(k)
-
-
 
 class Hangman:
 
@@ -25,10 +15,10 @@ class Hangman:
         print(f'{self.word}')
 
 
-    def unique_count(self,wordd):
+    def unique_count(self,word):
       k=list()
-      self.word =self.wordd
-      for x in self.wordd:
+      self.word = word
+      for x in self.word:
         if x not in k:
           k.append(x)
       return len(k)
@@ -65,5 +55,31 @@ class Hangman:
              self.list_of_guesses.append(self.guess)
              print(f'{self.list_of_guesses}')
   
-hangman1 = Hangman(word_list=['orange','mango','apple'])
-hangman1.ask_for_input()
+#hangman1 = Hangman(word_list=['orange','mango','apple'])
+#hangman1.ask_for_input()
+
+
+def play_game(word_list):
+    num_lives = 5
+
+    xx = 1
+    print(f'{xx}')
+    while xx < 6:
+        game = Hangman(word_list, num_lives)
+        game.ask_for_input()
+        if game.num_lives == 0:
+         print(f'{game.num_lives}')
+         print('you lost')
+         xx = xx + 6
+         print(f'{xx}, new')
+         
+        elif game.num_letters > 0:
+             xx = 2
+         
+        else:
+           game.num_letters == 0 and game.num_lives > 0
+           print('Congratulations. You won the game!')
+
+
+word_list=['orange','mango','apple']
+play_game(word_list)
